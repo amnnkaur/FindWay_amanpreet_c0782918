@@ -9,34 +9,19 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController{
+class ViewController: UIViewController, MKMapViewDelegate{
 
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        mapView.delegate = self
         mapView.initialLocation(firstLocation)
         addTapGesture()
         mapView.isZoomEnabled = false
         
        
     }
-    
-//    let gestureRecognizer = UITapGestureRecognizer(target: self, action:"handleTap:")
-//           gestureRecognizer.delegate = self
-//           mapView.addGestureRecognizer(gestureRecognizer)
-//
-//
-//    func handleTap(gestureRecognizer: UILongPressGestureRecognizer) {
-//
-//        let location = gestureRecognizer.locationInView(mapView)
-//        let coordinate = mapView.convertPoint(location, toCoordinateFromView: mapView)
-//
-//        // Add annotation:
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = coordinate
-//        mapView.addAnnotation(annotation)
-//    }
     
     let firstLocation = CLLocation(latitude: 43.683334, longitude: -79.766670)
     
@@ -48,17 +33,19 @@ class ViewController: UIViewController{
    
    @objc func handleTap(recognizer: UITapGestureRecognizer) {
     
+    let mapAnnotations  = self.mapView.annotations
+    self.mapView.removeAnnotations(mapAnnotations)
     let tapLocation = recognizer.location(in: mapView)
     let tapCoordinate = mapView.convert(tapLocation, toCoordinateFrom: mapView)
        
-       recognizer.numberOfTouchesRequired = 2
+       recognizer.numberOfTapsRequired = 2
        
        if recognizer.state == .ended
        {
            
             let annotation = MKPointAnnotation()
             annotation.coordinate = tapCoordinate
-            mapView.addAnnotation(annotation)
+            self.mapView.addAnnotation(annotation)
        }
    }
 }

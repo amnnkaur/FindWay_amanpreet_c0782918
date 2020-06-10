@@ -36,6 +36,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJs-ST-QbU">
                                 <rect key="frame" x="317" y="734" width="67" height="67"/>
                                 <state key="normal" image="locationBtn.png"/>
+                                <connections>
+                                    <action selector="locationBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l3K-nu-VGL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -54,12 +57,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="findMyWayBtn" destination="YJs-ST-QbU" id="qPY-YX-jnf"/>
                         <outlet property="mapView" destination="9TT-iz-oS2" id="azP-fD-kUe"/>
+                        <outlet property="segTransportType" destination="bwp-LG-Or4" id="P6M-Ew-Vpk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1281.1594202898552" y="-369.64285714285711"/>
+            <point key="canvasLocation" x="-1842" y="-380"/>
         </scene>
     </scenes>
     <resources>

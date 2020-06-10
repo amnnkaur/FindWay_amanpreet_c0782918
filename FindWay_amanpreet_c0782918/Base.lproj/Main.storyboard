@@ -21,17 +21,34 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mOe-QS-EUc">
                                 <rect key="frame" x="0.0" y="34" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="Find My way" id="mDv-dG-ie6"/>
                                 </items>
                             </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bwp-LG-Or4">
+                                <rect key="frame" x="30" y="811" width="354" height="32"/>
+                                <segments>
+                                    <segment title="Walking"/>
+                                    <segment title="Automobile"/>
+                                </segments>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJs-ST-QbU">
+                                <rect key="frame" x="317" y="734" width="67" height="67"/>
+                                <state key="normal" image="locationBtn.png"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bwp-LG-Or4" secondAttribute="trailing" constant="30" id="09C-Zi-31n"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YJs-ST-QbU" secondAttribute="trailing" constant="30" id="D8W-q4-owe"/>
+                            <constraint firstItem="bwp-LG-Or4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="J67-9U-xtX"/>
                             <constraint firstItem="9TT-iz-oS2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="PO0-q1-wzM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9TT-iz-oS2" secondAttribute="trailing" constant="20" id="Thm-gb-Uzg"/>
                             <constraint firstItem="9TT-iz-oS2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Un9-Wr-sVN"/>
                             <constraint firstItem="9TT-iz-oS2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="bA3-qU-bjj"/>
+                            <constraint firstItem="bwp-LG-Or4" firstAttribute="top" secondItem="YJs-ST-QbU" secondAttribute="bottom" constant="10" id="egC-uJ-HZq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bwp-LG-Or4" secondAttribute="bottom" constant="20" id="lwX-gi-cG4"/>
                             <constraint firstItem="9TT-iz-oS2" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="vUo-J9-clV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -42,7 +59,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-833.33333333333337" y="-378.34821428571428"/>
+            <point key="canvasLocation" x="-1281.1594202898552" y="-369.64285714285711"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="locationBtn.png" width="67" height="67"/>
+    </resources>
 </document>

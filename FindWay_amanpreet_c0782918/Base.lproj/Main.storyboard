@@ -15,22 +15,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9TT-iz-oS2">
-                                <rect key="frame" x="20" y="88" width="374" height="774"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9TT-iz-oS2">
+                                <rect key="frame" x="20" y="78" width="374" height="784"/>
                             </mapView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2SE-xX-Zyb">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mOe-QS-EUc">
+                                <rect key="frame" x="0.0" y="34" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <navigationItem title="Find My Way" id="05F-SL-T5z"/>
+                                    <navigationItem title="Find My way" id="mDv-dG-ie6"/>
                                 </items>
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="9TT-iz-oS2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="PO0-q1-wzM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9TT-iz-oS2" secondAttribute="trailing" constant="20" id="Thm-gb-Uzg"/>
                             <constraint firstItem="9TT-iz-oS2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Un9-Wr-sVN"/>
+                            <constraint firstItem="9TT-iz-oS2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="bA3-qU-bjj"/>
+                            <constraint firstItem="9TT-iz-oS2" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="vUo-J9-clV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -40,7 +42,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-455.07246376811599" y="-380.35714285714283"/>
+            <point key="canvasLocation" x="-833.33333333333337" y="-378.34821428571428"/>
         </scene>
     </scenes>
 </document>

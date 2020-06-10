@@ -15,7 +15,24 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        mapView.initialLocation(firstLocation)
       
     }
+    
+    let firstLocation = CLLocation(latitude: 43.683334, longitude: -79.766670)
+    
+   
 }
 
+  extension MKMapView {
+    func initialLocation(
+       _ location: CLLocation,
+       regionRadius: CLLocationDistance = 1000
+     ) {
+       let coordinateRegion = MKCoordinateRegion(
+         center: location.coordinate,
+         latitudinalMeters: regionRadius,
+         longitudinalMeters: regionRadius)
+       setRegion(coordinateRegion, animated: true)
+     }
+}

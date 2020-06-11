@@ -21,6 +21,7 @@ class ViewController: UIViewController, MKMapViewDelegate{
        return manager
     }()
        
+    var destinationCoordinates : CLLocationCoordinate2D?
     var coordinate: CLLocationCoordinate2D?
        
     
@@ -56,10 +57,10 @@ class ViewController: UIViewController, MKMapViewDelegate{
 
     @objc func handleTap(recognizer: UITapGestureRecognizer) {
      
-     let mapAnnotations  = self.mapView.annotations
-     self.mapView.removeAnnotations(mapAnnotations)
-     let tapLocation = recognizer.location(in: mapView)
-     let tapCoordinate = mapView.convert(tapLocation, toCoordinateFrom: mapView)
+    let mapAnnotations  = self.mapView.annotations
+    self.mapView.removeAnnotations(mapAnnotations)
+    let tapLocation = recognizer.location(in: mapView)
+    self.destinationCoordinates = mapView.convert(tapLocation, toCoordinateFrom: mapView)
         
         recognizer.numberOfTapsRequired = 2
         
@@ -67,7 +68,7 @@ class ViewController: UIViewController, MKMapViewDelegate{
         {
             
              let annotation = MKPointAnnotation()
-             annotation.coordinate = tapCoordinate
+             annotation.coordinate = self.destinationCoordinates!
              self.mapView.addAnnotation(annotation)
         }
     }
@@ -84,16 +85,35 @@ class ViewController: UIViewController, MKMapViewDelegate{
     }
 
     func getRoute() {
-        
         let destCoordinate = MKDirections.Request()
-        let sourceCoordinate = mapView.userLocation.coordinate
+               let sourceCoordinate = mapView.userLocation.coordinate
+               
+               let source = CLLocationCoordinate2DMake(sourceCoordinate.latitude, sourceCoordinate.longitude)
+               let destination = CLLocationCoordinate2DMake(self.destinationCoordinates?.latitude ?? 0, self.destinationCoordinates?.longitude ?? 0)
+               
+               let sourcePlacemark = MKPlacemark(coordinate: source)
+               let destPlacemark = MKPlacemark(coordinate: destination)
         
-        let source = CLLocationCoordinate2DMake(sourceCoordinate.latitude, sourceCoordinate.longitude)
-        let destination = CLLocationCoordinate2DMake(coordinate?.latitude ?? 0, coordinate?.longitude ?? 0)
+        switch segTransportType.selectedSegmentIndex {
+                       case 0 :
+                           destCoordinate.transportType = .walking
+                           for overlay in mapView.overlays{
+                               mapView.removeOverlay(overlay)
+                           }
+                       case 1 :
+                           destCoordinate.transportType = .automobile
+                           for overlay in mapView.overlays{
+                               mapView.removeOverlay(overlay)
+
+                           }
+                       default:
+                           break
+                       
+
+           }
         
-        let sourcePlacemark = MKPlacemark(coordinate: source)
-        let destPlacemark = MKPlacemark(coordinate: destination)
-        
+       
+
         destCoordinate.source = MKMapItem(placemark: sourcePlacemark)
         destCoordinate.destination =  MKMapItem(placemark: destPlacemark)
         
@@ -114,24 +134,16 @@ class ViewController: UIViewController, MKMapViewDelegate{
                   
                }
         
-         switch segTransportType.selectedSegmentIndex {
-                case 0 :
-                    destCoordinate.transportType = .walking
-                    for overlay in mapView.overlays{
-                        mapView.removeOverlay(overlay)
-                    }
-                case 1 :
-                    destCoordinate.transportType = .automobile
-                    for overlay in mapView.overlays{
-                        mapView.removeOverlay(overlay)
-                        
-                    }
-                default:
-                    break
-                }
-       
+        
     }
-   
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+
+        let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
+        renderer.strokeColor = UIColor.blue
+        renderer.lineWidth = 5.0
+        return renderer
+
+    }
 }
 //
 //  extension MKMapView {

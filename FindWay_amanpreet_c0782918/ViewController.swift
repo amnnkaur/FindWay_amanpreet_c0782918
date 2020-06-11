@@ -43,6 +43,8 @@ class ViewController: UIViewController, MKMapViewDelegate{
 //        mapView.initialLocation(firstLocation)
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
         mapView.addGestureRecognizer(tap)
+        
+//        self.stepZoom.addTarget(self, action: #selector(stepperChanged), for: .valueChanged)
        
     }
     
@@ -54,7 +56,46 @@ class ViewController: UIViewController, MKMapViewDelegate{
         getRoute()
       
     }
+    
 
+//    @objc func stepperChanged(){
+//
+//
+//
+//
+//    }
+    
+    
+//
+    
+    func zoomIn() {
+         var region: MKCoordinateRegion = mapView.region
+                                           region.span.latitudeDelta /= 2.0
+                                           region.span.longitudeDelta /= 2.0
+                                           mapView.setRegion(region, animated: true)
+    }
+    
+   
+    @IBAction func stepperChanged(_ sender: UIStepper) {
+        switch stepZoom.value {
+        case stepZoom.maximumValue:
+               print("max")
+                zoomIn()
+              case stepZoom.minimumValue:
+                  print("min")
+                               //Zoom Out
+                                    var region: MKCoordinateRegion = mapView.region
+                                    region.span.latitudeDelta = min(region.span.latitudeDelta * 2.0, 180.0)
+                                    region.span.longitudeDelta = min(region.span.longitudeDelta * 2.0, 180.0)
+                                    mapView.setRegion(region, animated: true)
+                            default:
+                                break
+                            }
+        
+       
+    }
+    
+    
     @objc func handleTap(recognizer: UITapGestureRecognizer) {
      
     let mapAnnotations  = self.mapView.annotations
@@ -108,12 +149,9 @@ class ViewController: UIViewController, MKMapViewDelegate{
                            }
                        default:
                            break
-                       
-
-           }
+                    
+                    }
         
-       
-
         destCoordinate.source = MKMapItem(placemark: sourcePlacemark)
         destCoordinate.destination =  MKMapItem(placemark: destPlacemark)
         
@@ -139,7 +177,7 @@ class ViewController: UIViewController, MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
 
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-        renderer.strokeColor = UIColor.blue
+        renderer.strokeColor = UIColor.orange
         renderer.lineWidth = 5.0
         return renderer
 

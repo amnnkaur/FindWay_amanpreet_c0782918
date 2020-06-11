@@ -40,8 +40,11 @@
                                     <action selector="locationBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l3K-nu-VGL"/>
                                 </connections>
                             </button>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="wlR-1g-gVi">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wlR-1g-gVi">
                                 <rect key="frame" x="30" y="759" width="94" height="32"/>
+                                <connections>
+                                    <action selector="stepperChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="F5E-TG-ttO"/>
+                                </connections>
                             </stepper>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

@@ -40,10 +40,15 @@
                                     <action selector="locationBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l3K-nu-VGL"/>
                                 </connections>
                             </button>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="wlR-1g-gVi">
+                                <rect key="frame" x="30" y="759" width="94" height="32"/>
+                            </stepper>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bwp-LG-Or4" secondAttribute="trailing" constant="30" id="09C-Zi-31n"/>
+                            <constraint firstItem="bwp-LG-Or4" firstAttribute="top" secondItem="wlR-1g-gVi" secondAttribute="bottom" constant="20" id="1TC-9l-QTZ"/>
+                            <constraint firstItem="wlR-1g-gVi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Cun-SX-2Vc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YJs-ST-QbU" secondAttribute="trailing" constant="30" id="D8W-q4-owe"/>
                             <constraint firstItem="bwp-LG-Or4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="J67-9U-xtX"/>
                             <constraint firstItem="9TT-iz-oS2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="PO0-q1-wzM"/>
@@ -60,11 +65,12 @@
                         <outlet property="findMyWayBtn" destination="YJs-ST-QbU" id="qPY-YX-jnf"/>
                         <outlet property="mapView" destination="9TT-iz-oS2" id="azP-fD-kUe"/>
                         <outlet property="segTransportType" destination="bwp-LG-Or4" id="P6M-Ew-Vpk"/>
+                        <outlet property="stepZoom" destination="wlR-1g-gVi" id="L4V-sa-Dr4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1842" y="-380"/>
+            <point key="canvasLocation" x="-2032" y="-415"/>
         </scene>
     </scenes>
     <resources>

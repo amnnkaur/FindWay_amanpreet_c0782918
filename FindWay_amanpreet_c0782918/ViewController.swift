@@ -15,6 +15,7 @@ class ViewController: UIViewController, MKMapViewDelegate{
     @IBOutlet weak var findMyWayBtn: UIButton!
     @IBOutlet weak var segTransportType: UISegmentedControl!
     @IBOutlet weak var stepZoom: UIStepper!
+    var oldvalue = 0.0
     let locationManager: CLLocationManager = {
        let manager = CLLocationManager()
        manager.requestWhenInUseAuthorization()
@@ -75,22 +76,46 @@ class ViewController: UIViewController, MKMapViewDelegate{
                                            mapView.setRegion(region, animated: true)
     }
     
+    func zoomOut(){
+         var region: MKCoordinateRegion = mapView.region
+                                            region.span.latitudeDelta = min(region.span.latitudeDelta * 2.0, 180.0)
+                                            region.span.longitudeDelta = min(region.span.longitudeDelta * 2.0, 180.0)
+                                            mapView.setRegion(region, animated: true)
+    }
+    
    
     @IBAction func stepperChanged(_ sender: UIStepper) {
-        switch stepZoom.value {
-        case stepZoom.maximumValue:
-               print("max")
-                zoomIn()
-              case stepZoom.minimumValue:
-                  print("min")
-                               //Zoom Out
-                                    var region: MKCoordinateRegion = mapView.region
-                                    region.span.latitudeDelta = min(region.span.latitudeDelta * 2.0, 180.0)
-                                    region.span.longitudeDelta = min(region.span.longitudeDelta * 2.0, 180.0)
-                                    mapView.setRegion(region, animated: true)
-                            default:
-                                break
-                            }
+//        switch stepZoom.value {
+//        case 1:
+//               print("max")
+//               print("zoom in")
+//                zoomIn()
+//              case 0:
+//                  print("min")
+//                               //Zoom Out
+//                                    var region: MKCoordinateRegion = mapView.region
+//                                    region.span.latitudeDelta = min(region.span.latitudeDelta * 2.0, 180.0)
+//                                    region.span.longitudeDelta = min(region.span.longitudeDelta * 2.0, 180.0)
+//                                    mapView.setRegion(region, animated: true)
+//                            default:
+//                                break
+//                            }
+       
+        var newvalue = stepZoom.value
+        
+        if(newvalue > self.oldvalue){
+//            print("if")
+            self.oldvalue = stepZoom.value
+//            print(self.oldvalue)
+            zoomIn()
+            
+        }else {
+//            print("else")
+            self.oldvalue = stepZoom.value
+//            print(self.oldvalue)
+        zoomOut()
+            
+        }
         
        
     }

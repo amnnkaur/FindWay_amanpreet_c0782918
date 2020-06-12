@@ -13,7 +13,7 @@
 		2A8C67AD24904355002D77D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A8C67AB24904355002D77D7 /* Main.storyboard */; };
 		2A8C67AF24904358002D77D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A8C67AE24904358002D77D7 /* Assets.xcassets */; };
 		2A8C67B224904358002D77D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A8C67B024904358002D77D7 /* LaunchScreen.storyboard */; };
-		2A8C67BB24918AD8002D77D7 /* locationBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A8C67BA24918AD8002D77D7 /* locationBtn.png */; };
+		2A8C67C1249327A8002D77D7 /* locationBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A8C67C0249327A8002D77D7 /* locationBtn.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		2A8C67AE24904358002D77D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A8C67B124904358002D77D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A8C67B324904358002D77D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2A8C67BA24918AD8002D77D7 /* locationBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = locationBtn.png; path = ../../../../../locationBtn.png; sourceTree = "<group>"; };
+		2A8C67C0249327A8002D77D7 /* locationBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = locationBtn.png; path = ../../../Downloads/locationBtn.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +58,6 @@
 		2A8C67A424904355002D77D7 /* FindWay_amanpreet_c0782918 */ = {
 			isa = PBXGroup;
 			children = (
-				2A8C67B924918AC3002D77D7 /* res */,
 				2A8C67A524904355002D77D7 /* AppDelegate.swift */,
 				2A8C67A724904355002D77D7 /* SceneDelegate.swift */,
 				2A8C67A924904355002D77D7 /* ViewController.swift */,
@@ -66,16 +65,9 @@
 				2A8C67AE24904358002D77D7 /* Assets.xcassets */,
 				2A8C67B024904358002D77D7 /* LaunchScreen.storyboard */,
 				2A8C67B324904358002D77D7 /* Info.plist */,
+				2A8C67C0249327A8002D77D7 /* locationBtn.png */,
 			);
 			path = FindWay_amanpreet_c0782918;
-			sourceTree = "<group>";
-		};
-		2A8C67B924918AC3002D77D7 /* res */ = {
-			isa = PBXGroup;
-			children = (
-				2A8C67BA24918AD8002D77D7 /* locationBtn.png */,
-			);
-			path = res;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +129,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A8C67B224904358002D77D7 /* LaunchScreen.storyboard in Resources */,
+				2A8C67C1249327A8002D77D7 /* locationBtn.png in Resources */,
 				2A8C67AF24904358002D77D7 /* Assets.xcassets in Resources */,
 				2A8C67AD24904355002D77D7 /* Main.storyboard in Resources */,
-				2A8C67BB24918AD8002D77D7 /* locationBtn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

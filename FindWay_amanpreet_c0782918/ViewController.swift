@@ -33,8 +33,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
         tap.numberOfTapsRequired = 2
         mapView.addGestureRecognizer(tap)
-            
+       
     }
+    
     
     @objc func handleTap(recognizer: UITapGestureRecognizer) {
         
@@ -50,6 +51,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
                
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = self.destinationCoordinates!
+                annotation.title = "Your destination"
                 self.mapView.addAnnotation(annotation)
            }
        }
@@ -110,21 +112,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     }
     
    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-             let userLocation = locations[0]
+            let userLocation = locations[0]
+            
+            let latitude = userLocation.coordinate.latitude
+            let longitude = userLocation.coordinate.longitude
              
-             let latitude = userLocation.coordinate.latitude
-             let longitude = userLocation.coordinate.longitude
-             
-    let latDelta: CLLocationDegrees = 0.05
-    let longDelta: CLLocationDegrees = 0.05
+            let latDelta: CLLocationDegrees = 0.05
+            let longDelta: CLLocationDegrees = 0.05
              
              // 3 - Creating the span, location coordinate and region
-             let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
-             let customLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-             let region = MKCoordinateRegion(center: customLocation, span: span)
+            let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
+            let customLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            let region = MKCoordinateRegion(center: customLocation, span: span)
                    
              // 4 - assign region to map
-             mapView.setRegion(region, animated: true)
+            mapView.setRegion(region, animated: true)
          }
 
     
@@ -190,11 +192,11 @@ extension ViewController :MKMapViewDelegate{
             return nil
         }
       
-            let pinAnnotation = mapView.dequeueReusableAnnotationView(withIdentifier: "droppablePin") ?? MKPinAnnotationView()
-                         pinAnnotation.image = UIImage(named: "marker")
-                         pinAnnotation.canShowCallout = true
-                         pinAnnotation.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-                         return pinAnnotation
+                let pinAnnotation = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "marker")
+                pinAnnotation.glyphTintColor = .white
+                pinAnnotation.markerTintColor = .systemPink
+                pinAnnotation.animatesWhenAdded = true
+                return pinAnnotation
 
        
       
@@ -202,8 +204,9 @@ extension ViewController :MKMapViewDelegate{
 
 func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             let renderer = MKPolylineRenderer(overlay: overlay)
-            renderer.strokeColor = UIColor.orange
+            renderer.strokeColor = .systemPink
             renderer.lineWidth = 5.0
+    
             return renderer
      }
 }

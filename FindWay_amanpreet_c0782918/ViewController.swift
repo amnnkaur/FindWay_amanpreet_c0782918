@@ -81,7 +81,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
 //               print("max")
 //               print("zoom in")
 //                zoomIn()
-//              case 0:
+//              case 2:
 //                  print("min")
 //                               //Zoom Out
 //                                    var region: MKCoordinateRegion = mapView.region
@@ -91,7 +91,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
 //                            default:
 //                                break
 //                            }
-       
+//
         var newvalue = stepZoom.value
         
         if(newvalue > self.oldvalue){
@@ -140,7 +140,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
                let sourcePlacemark = MKPlacemark(coordinate: source)
                let destPlacemark = MKPlacemark(coordinate: destination)
         
-        switch segTransportType.selectedSegmentIndex {
+                switch segTransportType.selectedSegmentIndex {
                        case 0 :
                            destCoordinate.transportType = .walking
                            for overlay in mapView.overlays{
@@ -203,12 +203,23 @@ extension ViewController :MKMapViewDelegate{
     }
 
 func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-            let renderer = MKPolylineRenderer(overlay: overlay)
-            renderer.strokeColor = .systemPink
-            renderer.lineWidth = 5.0
     
-            return renderer
-     }
+    let renderer = MKPolylineRenderer(overlay: overlay)
+
+    if (destCoordinate.transportType == .automobile){
+                    renderer.strokeColor = UIColor.systemPink
+                    renderer.lineWidth = 5.0
+                    return renderer
+    }  else if (destCoordinate.transportType == .walking){
+        renderer.strokeColor = UIColor.purple
+                    renderer.lineDashPattern = [2,10]
+                    renderer.lineWidth = 5.0
+                    return renderer
+    
+    }
+    return renderer
+}
+
 }
 
 
